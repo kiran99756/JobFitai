@@ -1,0 +1,21 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Frontend always calls /api/<name> (Vercel's native convention).
+# This rewrite makes the same paths work on Netlify by forwarding them
+# to the equivalent Netlify Function, so index.html needs no platform-specific code.
+[[redirects]]
+  from = "/api/coach"
+  to = "/.netlify/functions/coach"
+  status = 200
+
+[[redirects]]
+  from = "/api/fetch-jd"
+  to = "/.netlify/functions/fetch-jd"
+  status = 200
+
+[[redirects]]
+  from = "/api/job-search"
+  to = "/.netlify/functions/job-search"
+  status = 200
